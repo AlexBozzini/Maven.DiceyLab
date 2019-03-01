@@ -24,4 +24,39 @@ public class DiceTest {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void nullaryConstructorTest(){
+        // given
+        Integer expectedNumberOfDice = 2;
+        // when
+        Dice testDice = new Dice();
+        // then
+        Assert.assertEquals(expectedNumberOfDice, testDice.getNumberOfDice());
+    }
+
+    @Test
+    public void rollTest(){
+        // given
+        Dice testDice = new Dice(2, 2L);
+        Integer expectedFirstSeed = 4;
+        Integer expectedSecondSeed = 3;
+        // when
+        testDice.rollDice();
+        // then
+        Assert.assertEquals(expectedFirstSeed, testDice.getValue(0));
+        Assert.assertEquals(expectedSecondSeed, testDice.getValue(1));
+    }
+
+    @Test
+    public void getSumTest(){
+        // given
+        Dice testDice = new Dice (2, 2L);
+        Integer expectedSum = 7;
+        // when
+        testDice.rollDice();
+        Integer actualSum = testDice.getSum();
+        // then
+        Assert.assertEquals(expectedSum, actualSum);
+    }
+
 }
